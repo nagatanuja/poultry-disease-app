@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Poultry Disease Prediction</title>
+</head>
+<body>
+  <h2>Upload an image to predict disease</h2>
+  <input type="file" id="imageInput">
+  <button onclick="uploadImage()">Predict</button>
+  <p id="result"></p>
+
+  <script>
+    async function uploadImage() {
+      const input = document.getElementById('imageInput');
+      const formData = new FormData();
+      formData.append('image', input.files[0]);
+
+      const res = await fetch('/predict', {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await res.json();
+      document.getElementById('result').innerText = "Prediction: " + data.prediction;
+    }
+  </script>
+</body>
+</html>

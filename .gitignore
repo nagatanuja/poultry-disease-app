@@ -1,0 +1,10 @@
+# Ignore Python virtual environment
+venv/
+
+# Ignore model and large files
+*.h5
+*.png
+
+# Bytecode and cache
+__pycache__/
+*.pyc
